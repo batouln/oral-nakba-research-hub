@@ -5,27 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nakba Research Hub — Oral History, NLP & Audio Resources</title>
   <meta name="description" content="A curated reference for researchers working on Nakba oral histories, Palestinian Arabic NLP, speech datasets, and ASR systems.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #faf8f4;
-      --color-bg-alt: #f0ece4;
+      --color-bg: #f5f5f5;
+      --color-bg-alt: #e8e8e8;
       --color-bg-card: #ffffff;
-      --color-text: #2c2a26;
-      --color-text-muted: #6b6560;
-      --color-text-light: #9a9490;
-      --color-accent: #8b4513;
-      --color-accent-hover: #a0522d;
-      --color-accent-light: rgba(139,69,19,0.08);
-      --color-olive: #5c6b3c;
-      --color-olive-light: rgba(92,107,60,0.1);
-      --color-border: #e0dbd3;
-      --color-border-light: #ece8e1;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
+      --color-text: #1a1a1a;
+      --color-text-muted: #4a4a4a;
+      --color-text-light: #777777;
+      --color-accent: #1b7a3d;
+      --color-accent-hover: #239b4e;
+      --color-accent-light: rgba(27,122,61,0.08);
+      --color-olive: #1b7a3d;
+      --color-olive-light: rgba(27,122,61,0.1);
+      --color-border: #d0d0d0;
+      --color-border-light: #e0e0e0;
+      --font-display: Calibri, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-body: Calibri, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --font-mono: Consolas, 'Courier New', monospace;
       --max-width: 1100px;
       --section-gap: 5rem;
     }
@@ -48,7 +45,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(250,248,244,0.92);
+      background: rgba(245,245,245,0.94);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--color-border-light);
     }
@@ -253,12 +250,12 @@
       white-space: nowrap;
     }
     .tag-open { background: var(--color-olive-light); color: var(--color-olive); }
-    .tag-audio { background: #ede7f6; color: #5e35b1; }
-    .tag-text { background: #e3f2fd; color: #1565c0; }
-    .tag-video { background: #fce4ec; color: #c62828; }
-    .tag-tool { background: #fff3e0; color: #e65100; }
-    .tag-paper { background: #f3e5f5; color: #7b1fa2; }
-    .tag-dataset { background: #e8f5e9; color: #2e7d32; }
+    .tag-audio { background: #e8e8e8; color: #333333; }
+    .tag-text { background: #e0eee5; color: #1b7a3d; }
+    .tag-video { background: #e8e8e8; color: #1a1a1a; }
+    .tag-tool { background: #dff0d8; color: #2d6a1e; }
+    .tag-paper { background: #e8e8e8; color: #4a4a4a; }
+    .tag-dataset { background: #d4edda; color: #155724; }
     .tag-license { background: var(--color-bg-alt); color: var(--color-text-muted); }
     .resource-card .desc {
       color: var(--color-text-muted);
@@ -356,8 +353,8 @@
     .asr-table tr:hover td { background: var(--color-accent-light); }
     .asr-table .model-name { font-weight: 600; color: var(--color-text); }
     .asr-table .wer { font-family: var(--font-mono); font-size: 0.85rem; }
-    .wer-bad { color: #c62828; }
-    .wer-mid { color: #e65100; }
+    .wer-bad { color: #1a1a1a; font-weight: 700; }
+    .wer-mid { color: #4a4a4a; }
     .wer-ok { color: var(--color-olive); }
 
     /* ---- CALLOUT ---- */
