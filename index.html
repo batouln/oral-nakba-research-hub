@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nakba Research Hub — Oral History, NLP & Audio Resources</title>
+  <meta name="description" content="A curated reference for researchers working on Nakba oral histories, Palestinian Arabic NLP, speech datasets, and ASR systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #faf8f4;
+      --color-bg-alt: #f0ece4;
+      --color-bg-card: #ffffff;
+      --color-text: #2c2a26;
+      --color-text-muted: #6b6560;
+      --color-text-light: #9a9490;
+      --color-accent: #8b4513;
+      --color-accent-hover: #a0522d;
+      --color-accent-light: rgba(139,69,19,0.08);
+      --color-olive: #5c6b3c;
+      --color-olive-light: rgba(92,107,60,0.1);
+      --color-border: #e0dbd3;
+      --color-border-light: #ece8e1;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Source Sans 3', 'Source Sans Pro', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --max-width: 1100px;
+      --section-gap: 5rem;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250,248,244,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border-light);
+    }
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo span { color: var(--color-olive); }
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.7rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-accent); background: var(--color-accent-light); }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .hamburger svg { width: 24px; height: 24px; stroke: var(--color-text); }
+
+    /* ---- HERO ---- */
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 5rem 2rem 4rem;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-olive);
+      background: var(--color-olive-light);
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-text);
+      max-width: 800px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+    .hero-desc {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+    .hero-stat { text-align: left; }
+    .hero-stat .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1.2;
+    }
+    .hero-stat .label {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+    }
+
+    /* ---- HERO IMAGE ---- */
+    .hero-image {
+      max-width: var(--max-width);
+      margin: 0 auto 2rem;
+      padding: 0 2rem;
+    }
+    .hero-image img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+    }
+    .hero-image figcaption {
+      font-size: 0.82rem;
+      color: var(--color-text-light);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* ---- SECTIONS ---- */
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem var(--section-gap);
+    }
+    .section-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--color-border);
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--color-text-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.25;
+    }
+    .section-header p {
+      margin-top: 0.6rem;
+      color: var(--color-text-muted);
+      font-size: 1.02rem;
+      max-width: 700px;
+    }
+
+    /* ---- RESOURCE CARDS ---- */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+    .resource-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border-light);
+      border-radius: 10px;
+      padding: 1.5rem 1.8rem;
+      transition: all 0.25s;
+      position: relative;
+    }
+    .resource-card:hover {
+      border-color: var(--color-border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transform: translateY(-1px);
+    }
+    .resource-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-text);
+    }
+    .resource-card h3 a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .resource-card h3 a:hover { border-bottom-color: var(--color-accent); color: var(--color-accent); }
+    .resource-card .meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.6rem;
+    }
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .tag-open { background: var(--color-olive-light); color: var(--color-olive); }
+    .tag-audio { background: #ede7f6; color: #5e35b1; }
+    .tag-text { background: #e3f2fd; color: #1565c0; }
+    .tag-video { background: #fce4ec; color: #c62828; }
+    .tag-tool { background: #fff3e0; color: #e65100; }
+    .tag-paper { background: #f3e5f5; color: #7b1fa2; }
+    .tag-dataset { background: #e8f5e9; color: #2e7d32; }
+    .tag-license { background: var(--color-bg-alt); color: var(--color-text-muted); }
+    .resource-card .desc {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+    .resource-card .link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .resource-card .link:hover { gap: 0.5rem; }
+    .resource-card .link svg { width: 14px; height: 14px; }
+
+    /* ---- PAPERS TABLE ---- */
+    .papers-workshop { margin-bottom: 3rem; }
+    .papers-workshop h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .papers-workshop .workshop-meta {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.2rem;
+    }
+    .papers-workshop .workshop-meta a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .paper-list { list-style: none; }
+    .paper-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+    }
+    .paper-list li:last-child { border-bottom: none; }
+    .paper-bullet {
+      flex-shrink: 0;
+      width: 6px; height: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      margin-top: 0.6rem;
+    }
+    .paper-title {
+      font-weight: 600;
+      color: var(--color-text);
+      font-size: 0.95rem;
+    }
+    .paper-authors {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    /* ---- ASR TABLE ---- */
+    .asr-table-wrap {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      border-radius: 10px;
+      border: 1px solid var(--color-border-light);
+    }
+    .asr-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .asr-table th {
+      background: var(--color-bg-alt);
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      padding: 0.8rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .asr-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+      vertical-align: top;
+    }
+    .asr-table tr:last-child td { border-bottom: none; }
+    .asr-table tr:hover td { background: var(--color-accent-light); }
+    .asr-table .model-name { font-weight: 600; color: var(--color-text); }
+    .asr-table .wer { font-family: var(--font-mono); font-size: 0.85rem; }
+    .wer-bad { color: #c62828; }
+    .wer-mid { color: #e65100; }
+    .wer-ok { color: var(--color-olive); }
+
+    /* ---- CALLOUT ---- */
+    .callout {
+      background: var(--color-accent-light);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.3rem 1.6rem;
+      margin: 2rem 0;
+    }
+    .callout-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--color-accent);
+      margin-bottom: 0.3rem;
+    }
+    .callout p { font-size: 0.93rem; color: var(--color-text-muted); line-height: 1.6; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      border-top: 1px solid var(--color-border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    footer p {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      max-width: var(--max-width);
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+    footer a { color: var(--color-accent); text-decoration: none; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        padding: 1rem 2rem;
+        gap: 0.2rem;
+      }
+      .hamburger { display: block; }
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 1.5rem; }
+      .section { padding: 0 1.5rem var(--section-gap); }
+      .resource-card { padding: 1.2rem 1.3rem; }
+    }
+
+    /* ---- LINK ARROW ICON ---- */
+    .arrow-icon::after {
+      content: ' →';
+      transition: margin-left 0.2s;
+    }
+    .arrow-icon:hover::after { margin-left: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Nakba<span>Research</span>Hub</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#archives">Archives</a></li>
+      <li><a href="#datasets">Datasets</a></li>
+      <li><a href="#papers">Papers</a></li>
+      <li><a href="#asr">ASR</a></li>
+      <li><a href="#tools">NLP Tools</a></li>
+      <li><a href="#stories">Stories</a></li>
+      <li><a href="#orgs">Organizations</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">Open Research Reference</div>
+  <h1>A Researcher's Guide to <em>Nakba</em> Oral History &amp; Palestinian Arabic NLP</h1>
+  <p class="hero-desc">
+    A curated, one-stop reference for anyone working on Nakba oral testimonies, Palestinian dialect speech recognition, Arabic NLP, or digital heritage preservation. Datasets, tools, papers, archives — all in one place.
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">60+</div><div class="label">Resources</div></div>
+    <div class="hero-stat"><div class="num">7</div><div class="label">Categories</div></div>
+    <div class="hero-stat"><div class="num">2,180+</div><div class="label">Hours of Testimonies</div></div>
+    <div class="hero-stat"><div class="num">708</div><div class="label">Transcribed Interviews</div></div>
+  </div>
+</header>
+
+<!-- HERO IMAGE — replace src with your image path, e.g. "images/banner.jpg" -->
+<figure class="hero-image">
+  <img src="images/banner.jpg" alt="Nakba oral history research — Palestinian testimonies and NLP">
+  <figcaption><!-- Add your caption here, e.g. "Photo: Palestinian refugee camp, 1948" --></figcaption>
+</figure>
+
+
+<!-- ============================================ -->
+<!-- SECTION 1: ORAL HISTORY ARCHIVES -->
+<!-- ============================================ -->
+<section class="section" id="archives">
+  <div class="section-header">
+    <div class="section-num">01</div>
+    <h2>Oral History Archives &amp; Audio Collections</h2>
+    <p>Major collections of recorded Palestinian testimonies — audio, video, and transcribed interviews documenting the Nakba and its aftermath.</p>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-audio">Audio</span>
+        <span class="tag tag-video">Video</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://libraries.aub.edu.lb/poha/" target="_blank">Palestinian Oral History Archive (POHA)</a></h3>
+      <p class="desc">AUB's flagship collection — 1,000+ hours of video &amp; audio testimonies from first-generation Palestinian refugees in Lebanon. Combines the Nakba Archive (558 hrs video), Al-Jana/ARCPA collections (550+ hrs), and AUB oral histories. Searchable in Arabic and English. Joint project of ARCPA, Nakba Archive, AUB's Issam Fares Institute, and AUB Libraries.</p>
+      <a href="https://libraries.aub.edu.lb/poha/" target="_blank" class="link">Browse Archive <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-video">Video</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://www.nakba-archive.org" target="_blank">Nakba Archive</a></h3>
+      <p class="desc">Founded in Lebanon in 2002. 650+ video interviews with first-generation refugees from 150+ villages. Some testimonies transcribed and translated into English. Core contributor to POHA.</p>
+      <a href="https://www.nakba-archive.org" target="_blank" class="link">Visit <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-video">Video</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://www.palestineremembered.com/OralHistory/" target="_blank">Palestine Remembered</a></h3>
+      <p class="desc">Community-driven platform with 700+ video oral-history interviews (3,500+ hours) organized by district and town. Launched 2003. The primary source for NakbaEcho's YouTube/PalRemembered subset (323 interviews).</p>
+      <a href="https://www.palestineremembered.com/OralHistory/" target="_blank" class="link">Browse Interviews <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-video">Video</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://www.zochrot.org/testimonies/all/en" target="_blank">Zochrot</a></h3>
+      <p class="desc">Israeli NGO collecting Nakba testimonies from internally displaced Palestinians and 1948 veterans. Features the iNakba/iReturn interactive map app of depopulated villages, plus the "Towards a Common Archive" project with 30+ filmed testimonies. Available in Arabic, English, and Hebrew.</p>
+      <a href="https://www.zochrot.org/testimonies/all/en" target="_blank" class="link">Explore Testimonies <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-audio">Audio</span>
+        <span class="tag tag-video">Video</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://www.palmuseum.org/en/museum-from-home" target="_blank">Palestinian Museum Digital Archive (PMDA)</a></h3>
+      <p class="desc">343,485+ digitized archival items across 416 collections spanning 200+ years, including audio/video recordings, photographs, and documents. Based in Birzeit. Co-publisher of the Interactive Encyclopedia of the Palestine Question (PalQuest).</p>
+      <a href="https://www.palmuseum.org/en/museum-from-home" target="_blank" class="link">Explore Archive <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-video">Video</span>
+        <span class="tag tag-audio">Audio</span>
+        <span class="tag tag-license">UNESCO Listed</span>
+      </div>
+      <h3><a href="https://www.unrwa.org/photo-and-film-archive" target="_blank">UNRWA Photo &amp; Film Archive</a></h3>
+      <p class="desc">~500,000 assets: 430,000 negatives, 10,000 prints, 85,000 slides, 75 films, 730 videocassettes. Inscribed on UNESCO's Memory of the World register (2009). Partially digitized and online.</p>
+      <a href="https://www.unrwa.org/photo-and-film-archive" target="_blank" class="link">View Collection <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://www.palquest.org" target="_blank">Interactive Encyclopedia of the Palestine Question (PalQuest)</a></h3>
+      <p class="desc">Institute for Palestine Studies + Palestinian Museum. Bilingual (Arabic/English), 800,000 words per language. Includes digitized "All That Remains" (418 destroyed villages), biographies, and primary documents. Launched June 2022.</p>
+      <a href="https://www.palquest.org" target="_blank" class="link">Browse Encyclopedia <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- SECTION 2: DATASETS -->
+<!-- ============================================ -->
+<section class="section" id="datasets">
+  <div class="section-header">
+    <div class="section-num">02</div>
+    <h2>Datasets</h2>
+    <p>Publicly available corpora for Nakba research, Palestinian Arabic NLP, and Levantine speech recognition.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Featured Dataset</div>
+    <p><strong>NakbaEcho</strong> is the field's flagship corpus bridging the speech-text gap — 708 automatically-transcribed interviews (2,180 hrs, 12.85M tokens) with NER, emotion, and thematic annotations. <a href="https://github.com/batouln/NakbaEcho" target="_blank" class="arrow-icon">View on GitHub</a></p>
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.25rem;margin:2rem 0 1rem;color:var(--color-text)">Nakba-Specific Datasets</h3>
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-license">CC BY-NC 4.0</span>
+      </div>
+      <h3><a href="https://github.com/batouln/NakbaEcho" target="_blank">NakbaEcho</a></h3>
+      <p class="desc">708 interviews, ~2,180 hours, 12.85M tokens, 1,051,160 segments, 747,632 named entities, 239 villages. Sources: POHA (349), YouTube/PalRemembered (323), Zochrot (36). Transcribed with Gemini 2.5 Pro preserving dialect (no MSA normalization). 7.00% micro-averaged WER. Annotations: emotion, NER (CAMeL-Lab BERT), thematic flags, speaker gender. To appear at LREC 2026.</p>
+      <a href="https://github.com/batouln/NakbaEcho" target="_blank" class="link">GitHub Repo <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-paper">NakbaNLP 2025</span>
+      </div>
+      <h3>Nakba Lexicon</h3>
+      <p class="desc">Lexical dataset from the poetry collection <em>Asifa 'Ala al-Iz'aj</em> by Istiqlal Eid. 10 thematic domains. Used with AraBERT/MARBERT models. Presented at NakbaNLP 2025.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-paper">NakbaNLP 2025</span>
+      </div>
+      <h3>NakbaTR — Turkish NER for Nakba Narratives</h3>
+      <p class="desc">4,032 sentences annotated with 2,289 PERSON, 5,875 LOCATION, 1,299 ORGANIZATION tags. Turkish-language Nakba narrative NER.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-paper">NakbaNLP 2026</span>
+      </div>
+      <h3>Nakba Discourse 2025</h3>
+      <p class="desc">Bilingual social-media dataset for collective-trauma analysis. Zaghouani et al., accepted at NakbaNLP 2026.</p>
+    </div>
+
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.25rem;margin:2.5rem 0 1rem;color:var(--color-text)">Palestinian &amp; Levantine Arabic Corpora</h3>
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-text">Text</span>
+        <span class="tag tag-license">CC BY 4.0</span>
+      </div>
+      <h3><a href="https://portal.sina.birzeit.edu/curras" target="_blank">Curras</a></h3>
+      <p class="desc">Palestinian dialect corpus, 56K tokens, annotated with 16 morphological features per token. The foundational Palestinian Arabic NLP corpus, from Birzeit SinaLab. Extended with Baladi (Lebanese, 10K tokens) and Nabra (Syrian, 60K tokens) to form a Levantine family.</p>
+      <a href="https://portal.sina.birzeit.edu/curras" target="_blank" class="link">Access Portal <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-text">Text</span>
+      </div>
+      <h3><a href="https://sina.birzeit.edu/resources/index.html" target="_blank">Wojood NER Corpus</a></h3>
+      <p class="desc">550K tokens (MSA + dialect), 21 entity types with nested annotations. Extended by WojoodFine (51 subtypes), WojoodGaza (60K tokens from Israeli war on Gaza), WojoodRelations (40 relation types), and WojoodHadath (event-argument). From Birzeit SinaLab.</p>
+      <a href="https://sina.birzeit.edu/resources/index.html" target="_blank" class="link">SinaLab Resources <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-text">Text</span>
+      </div>
+      <h3><a href="https://sina.birzeit.edu/resources/index.html" target="_blank">Konooz</a></h3>
+      <p class="desc">Multi-domain, multi-dialect NER corpus: 777K tokens, 16 dialects × 10 domains. Companion to Wojood for broader Arabic NER. From Birzeit SinaLab.</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-text">Text</span>
+      </div>
+      <h3><a href="https://github.com/SinaLab/ArBanking77" target="_blank">ArBanking77</a></h3>
+      <p class="desc">31,404 intent-detection queries in MSA + Palestinian (and other) dialects, 77 banking intents. Useful for Palestinian dialect intent classification.</p>
+      <a href="https://github.com/SinaLab/ArBanking77" target="_blank" class="link">GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+  </div>
+
+  <h3 style="font-family:var(--font-display);font-size:1.25rem;margin:2.5rem 0 1rem;color:var(--color-text)">Arabic Speech Corpora</h3>
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-audio">Audio</span>
+        <span class="tag tag-license">CC BY-NC-ND 4.0</span>
+      </div>
+      <h3><a href="https://huggingface.co/datasets/UBC-NLP/Casablanca" target="_blank">Casablanca</a></h3>
+      <p class="desc">~48 hours covering 8 Arabic dialects including Palestinian (~6 hrs, 22 episodes). Annotated with transcription, gender, dialect, code-switching. Palestinian subset is heavily male-skewed (92.31%). Validation+test splits; audio via YouTube URLs. Co-authored by Birzeit researchers (EMNLP 2024).</p>
+      <a href="https://huggingface.co/datasets/UBC-NLP/Casablanca" target="_blank" class="link">Hugging Face <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-audio">Audio</span>
+        <span class="tag tag-open">Open Access</span>
+      </div>
+      <h3><a href="https://huggingface.co/datasets/abdusah/masc" target="_blank">MASC — Massive Arabic Speech Corpus</a></h3>
+      <p class="desc">1,000 hours from 700+ YouTube channels, 20+ dialects including Levantine. Widely used as a base for fine-tuning Arabic ASR models.</p>
+      <a href="https://huggingface.co/datasets/abdusah/masc" target="_blank" class="link">Hugging Face <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-dataset">Dataset</span>
+        <span class="tag tag-audio">Audio</span>
+      </div>
+      <h3>QASR &amp; MGB Challenges</h3>
+      <p class="desc"><strong>QASR:</strong> 2,000 hours from Al Jazeera with segmentation, punctuation, and speaker info. <strong>MGB-2:</strong> 1,200 hours of Arabic broadcast speech (~78% MSA). <strong>MGB-3:</strong> Egyptian dialect. <strong>MGB-5:</strong> Moroccan dialect. Standard benchmarks for Arabic ASR.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- SECTION 3: RESEARCH PAPERS -->
+<!-- ============================================ -->
+<section class="section" id="papers">
+  <div class="section-header">
+    <div class="section-num">03</div>
+    <h2>Research Papers</h2>
+    <p>Papers from the NakbaNLP workshops and core Palestinian Arabic NLP research.</p>
+  </div>
+
+  <div class="papers-workshop">
+    <h3>NakbaNLP 2025 — First Workshop</h3>
+    <p class="workshop-meta">LREC-COLING 2025, Abu Dhabi &nbsp;·&nbsp; <a href="https://aclanthology.org/volumes/2025.nakbanlp-1/" target="_blank">ACL Anthology Proceedings</a></p>
+    <ul class="paper-list">
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Deciphering Implicatures: On NLP and Oral Testimonies</div><div class="paper-authors">Sabra</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">A Cultural Shift in Western Perceptions of Palestine</div><div class="paper-authors">Regier &amp; Khalidi</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Cognitive Geographies of Catastrophe Narratives</div><div class="paper-authors">Lamar et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Sentiment Analysis of Nakba Oral Histories: A Critical Study of LLMs</div><div class="paper-authors">Ashqar</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">The Nakba Lexicon</div><div class="paper-authors">AbuHaija et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Arabic Topic Classification Corpus of the Nakba Short Stories (NTCC)</div><div class="paper-authors">Hamed &amp; Zaidkilani</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Exploring Author Style in Nakba Short Stories</div><div class="paper-authors">Hamed &amp; Zaidkilani</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Detecting Inconsistencies in Narrative Elements of Cross-Lingual Nakba Texts</div><div class="paper-authors">Hamarsheh et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Multilingual Propaganda Detection</div><div class="paper-authors">Ragab et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Collective Memory and Narrative Cohesion: Palestinian Refugee Oral Histories in Lebanon</div><div class="paper-authors">Awad et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">The Missing Cause: Causal Attributions in Reporting on Palestine</div><div class="paper-authors">Garcia Corral et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">NakbaTR: A Turkish NER Dataset for Nakba Narratives</div><div class="paper-authors">Bilgin Tasdemir &amp; Özateş</div></div></li>
+    </ul>
+  </div>
+
+  <div class="papers-workshop">
+    <h3>NakbaNLP 2026 — Second Workshop</h3>
+    <p class="workshop-meta">LREC 2026, Palma de Mallorca, 11 May 2026 &nbsp;·&nbsp; <a href="https://sina.birzeit.edu/nakba-nlp/2026/" target="_blank">Workshop Website</a></p>
+    <ul class="paper-list">
+      <li><div class="paper-bullet"></div><div><div class="paper-title">The NakbaEcho Dataset: A Large-Scale Transcribed Arabic Oral History Corpus</div><div class="paper-authors">Balah, Fawzi, Elmimouni, Magdy</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Mining the Pre-1948 Palestinian Press</div><div class="paper-authors">Barakat &amp; Barakat</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Nakba Discourse 2025: Bilingual Social-Media Dataset</div><div class="paper-authors">Zaghouani et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">ChronoLearn: A GRAG LLM-Based System for Structuring Nakba Narratives</div><div class="paper-authors">Aladdasi et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Tarikhi: Arabic Temporal Information Extraction from Historical Documents</div><div class="paper-authors">Abdo et al.</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Credibility Assessment for Arabic News on the Gaza War</div><div class="paper-authors">Abril et al.</div></div></li>
+    </ul>
+    <p style="margin-top:1rem;font-size:0.9rem;color:var(--color-text-muted)"><strong>Shared Tasks:</strong> NakbaVirality · NakbaArchiveClassifier (image classification) · StanceNakba · NakbaFakeNewsDetection · AR-MS (Arabic manuscript understanding)</p>
+  </div>
+
+  <div class="papers-workshop">
+    <h3>Core Palestinian Arabic &amp; Speech NLP Papers</h3>
+    <ul class="paper-list">
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Curras: An Annotated Corpus for the Palestinian Arabic Dialect</div><div class="paper-authors">Jarrar et al. — LRE, 2017</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Curras + Baladi: Towards a Levantine Corpus</div><div class="paper-authors">El Haff, Jarrar, Hammouda, Zaraket — LREC 2022 · <a href="https://arxiv.org/pdf/2205.09692" target="_blank" style="color:var(--color-accent)">arXiv</a></div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Wojood: Nested Arabic Named Entity Corpus and Recognition</div><div class="paper-authors">Jarrar et al. — LREC 2022</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Casablanca: Data and Models for Multidialectal Arabic Speech Recognition</div><div class="paper-authors">Talafha et al. — EMNLP 2024 · <a href="https://arxiv.org/html/2410.04527v1" target="_blank" style="color:var(--color-accent)">arXiv</a></div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">N-Shot Benchmarking of Whisper on Diverse Arabic Speech Recognition</div><div class="paper-authors">arXiv 2306.02902</div></div></li>
+      <li><div class="paper-bullet"></div><div><div class="paper-title">Konooz: Multi-domain Multi-dialect Corpus for NER</div><div class="paper-authors">Hamad, Khalilia, Jarrar · <a href="https://arxiv.org/abs/2506.12615" target="_blank" style="color:var(--color-accent)">arXiv</a></div></div></li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- SECTION 4: ASR SYSTEMS -->
+<!-- ============================================ -->
+<section class="section" id="asr">
+  <div class="section-header">
+    <div class="section-num">04</div>
+    <h2>ASR Systems for Palestinian &amp; Levantine Arabic</h2>
+    <p>Speech recognition tools and their performance on Palestinian Arabic — the hardest practical gap in this field.</p>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">Key Finding</div>
+    <p>Palestinian Arabic ASR remains an unsolved problem. The best published WER on the Casablanca Palestinian test set is ~48.6% (Whisper-large-v2 with preprocessing). Any project transcribing testimonies must budget for heavy human correction or domain-specific fine-tuning.</p>
+  </div>
+
+  <div class="asr-table-wrap">
+    <table class="asr-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Type</th>
+          <th>Palestinian WER</th>
+          <th>Notes</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model-name">Whisper-large-v2</td>
+          <td>Open (OpenAI)</td>
+          <td class="wer wer-bad">~48.6%</td>
+          <td>Best zero-shot on Palestinian (with preprocessing). Degrades sharply on unseen dialects.</td>
+          <td><a href="https://github.com/openai/whisper" target="_blank" style="color:var(--color-accent)">GitHub</a></td>
+        </tr>
+        <tr>
+          <td class="model-name">WhisperLevantineArabic</td>
+          <td>Open (Apache-2.0)</td>
+          <td class="wer wer-mid">~33%</td>
+          <td>Whisper-large-v3 fine-tuned on ~1,200 hrs Levantine. Model card says 33% WER (README claims 10% — use model card figure).</td>
+          <td><a href="https://huggingface.co/HebArabNlpProject/WhisperLevantine" target="_blank" style="color:var(--color-accent)">HuggingFace</a></td>
+        </tr>
+        <tr>
+          <td class="model-name">whisper-small-dialect_levantine</td>
+          <td>Open (Apache-2.0)</td>
+          <td class="wer wer-mid">Not reported</td>
+          <td>Whisper-small fine-tuned on Levantine subset (&lt;20 hrs) of MASC.</td>
+          <td><a href="https://huggingface.co/otozz/whisper-small-dialect_levantine" target="_blank" style="color:var(--color-accent)">HuggingFace</a></td>
+        </tr>
+        <tr>
+          <td class="model-name">ARBML / klaam</td>
+          <td>Open</td>
+          <td class="wer wer-mid">—</td>
+          <td>Open-source Arabic ASR; covers a Levantine dialect class. MGB-2/MGB-3 based.</td>
+          <td><a href="https://github.com/ARBML/klaam" target="_blank" style="color:var(--color-accent)">GitHub</a></td>
+        </tr>
+        <tr>
+          <td class="model-name">Munsit (CNTXT AI)</td>
+          <td>Commercial/API</td>
+          <td class="wer wer-ok">~24%*</td>
+          <td>Claims best Arabic ASR. 26.68 avg WER across 6 benchmarks. *Self-reported; no independent Palestinian eval.</td>
+          <td><a href="https://arxiv.org/abs/2504.12254" target="_blank" style="color:var(--color-accent)">Paper</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="margin-top:1rem;font-size:0.85rem;color:var(--color-text-light)">
+    <strong>Leaderboard:</strong> <a href="https://huggingface.co/spaces/elmresearchcenter/open_universal_arabic_asr_leaderboard" target="_blank" style="color:var(--color-accent)">Open Universal Arabic ASR Leaderboard</a> (arXiv 2412.13788) — benchmarks Arabic ASR models using Casablanca and MASC test sets.
+  </p>
+</section>
+
+
+<!-- ============================================ -->
+<!-- SECTION 5: NLP TOOLS -->
+<!-- ============================================ -->
+<section class="section" id="tools">
+  <div class="section-header">
+    <div class="section-num">05</div>
+    <h2>Palestinian Dialect NLP Tools</h2>
+    <p>Open-source tools for morphological analysis, NER, dialect identification, and Arabic text processing.</p>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-tool">Tool</span>
+        <span class="tag tag-open">Open Source</span>
+      </div>
+      <h3><a href="https://sina.birzeit.edu/sinatools/" target="_blank">SinaTools</a></h3>
+      <p class="desc">Birzeit SinaLab's Python toolkit: morphology tagging, NER, word sense disambiguation, relation extraction, semantic relatedness, synonyms, diacritic-based matching. The most complete open stack for Palestinian Arabic NLP.</p>
+      <a href="https://sina.birzeit.edu/sinatools/" target="_blank" class="link">Documentation <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-tool">Tool</span>
+        <span class="tag tag-open">Open Source</span>
+      </div>
+      <h3><a href="https://github.com/CAMeL-Lab/camel_tools" target="_blank">CAMeL Tools</a></h3>
+      <p class="desc">NYU Abu Dhabi's comprehensive Arabic NLP suite: preprocessing, morphological analysis, dialect identification (25 cities + MSA via MADAR), NER, sentiment analysis. CAMeL collaborated with Birzeit on annotating 50K words of Palestinian Arabic. Used in NakbaEcho for NER.</p>
+      <a href="https://github.com/CAMeL-Lab/camel_tools" target="_blank" class="link">GitHub <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <h3><a href="https://sina.birzeit.edu/alma/" target="_blank">ALMA — Arabic Morphology Tagger</a></h3>
+      <p class="desc">Lemmatizer, POS tagger, and root extractor for Arabic including Palestinian dialect. Part of the SinaLab ecosystem.</p>
+      <a href="https://sina.birzeit.edu/alma/" target="_blank" class="link">Try Online <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <h3><a href="https://sites.google.com/nyu.edu/madar/" target="_blank">MADAR — Dialect Identification</a></h3>
+      <p class="desc">Corpus and system for Arabic dialect identification across 25 Arab cities. Underpins CAMeL Tools' dialect ID and the ADIDA online identifier.</p>
+      <a href="https://sites.google.com/nyu.edu/madar/" target="_blank" class="link">Project Page <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-tool">Tool</span>
+      </div>
+      <h3>AraBERT &amp; MARBERT</h3>
+      <p class="desc">Pre-trained Arabic transformer models widely used in NakbaNLP papers for sentiment analysis, topic classification, and NER. AraBERT is trained on MSA; MARBERT is dialect-aware (Twitter-trained).</p>
+    </div>
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-tool">Tool</span>
+        <span class="tag tag-open">Open Source</span>
+      </div>
+      <h3><a href="https://sina.birzeit.edu/wojood/" target="_blank">Wojood NER Demo</a></h3>
+      <p class="desc">Online demo for testing Wojood NER on Arabic text — supports MSA and dialect with 21 entity types and nested annotations.</p>
+      <a href="https://sina.birzeit.edu/wojood/" target="_blank" class="link">Try Online <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- SECTION 6: STORIES & DIGITAL PROJECTS -->
+<!-- ============================================ -->
+<section class="section" id="stories">
+  <div class="section-header">
+    <div class="section-num">06</div>
+    <h2>Stories, Maps &amp; Digital Projects</h2>
+    <p>Interactive storytelling platforms, geographic visualizations, and documentary projects preserving Nakba narratives.</p>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <div class="meta">
+        <span class="tag tag-open">Open Source</span>
+      </div>
+      <h3><a href="https://palopenmaps.org" target="_blank">Palestine Open Maps</a></h3>
+      <p class="desc">200+ 1940s British Mandate survey map sheets stitched with present-day data, 1945 Village Statistics, aerial photography, and oral histories. Downloadable, Arabic interface, 3D viewer. By Visualizing Palestine + Columbia Studio-X Amman.</p>
+      <a href="https://palopenmaps.org" target="_blank" class="link">Explore Maps <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://libraries.aub.edu.lb/poha-viewer/map/en/" target="_blank">POHA Oral History Map</a></h3>
+      <p class="desc">Navigate POHA testimonies geographically and chronologically by landmark. By Visualizing Palestine + AUB.</p>
+      <a href="https://libraries.aub.edu.lb/poha-viewer/map/en/" target="_blank" class="link">View Map <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://visualizingpalestine.org" target="_blank">Visualizing Palestine</a></h3>
+      <p class="desc">Data-driven infographics and digital storytelling — including "We Had Dreams," "Remember Their Names," "Gaza's Original Villages," and interactive map projects.</p>
+      <a href="https://visualizingpalestine.org" target="_blank" class="link">Visit <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://forensic-architecture.org" target="_blank">Forensic Architecture</a></h3>
+      <p class="desc">Spatial/architectural investigations including <em>Return to al-Ma'in</em>, <em>Executions and Mass Graves in Tantura</em>, <em>The Massacre at al-Dawayima</em>, and <em>Ground Truth</em> (al-Araqib). Partnered with Al-Haq's FAI Unit.</p>
+      <a href="https://forensic-architecture.org" target="_blank" class="link">Investigations <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <h3>iNakba / iReturn App (Zochrot)</h3>
+      <p class="desc">Interactive mobile app mapping depopulated Palestinian villages with testimonies, photographs, and historical data. Available in Arabic, English, and Hebrew.</p>
+    </div>
+
+    <div class="resource-card">
+      <h3>Key Documentaries</h3>
+      <p class="desc"><em>Al-Nakba</em> (Rawan Damen, Al Jazeera, 2008, four parts) · <em>The Great Book Robbery</em> (Benny Brunner, 2012)</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- SECTION 7: ORGANIZATIONS -->
+<!-- ============================================ -->
+<section class="section" id="orgs">
+  <div class="section-header">
+    <div class="section-num">07</div>
+    <h2>Organizations &amp; Institutions</h2>
+    <p>Academic labs, archives, and NGOs at the center of Nakba research and Palestinian Arabic NLP.</p>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <h3><a href="https://sina.birzeit.edu" target="_blank">Birzeit University / SinaLab</a></h3>
+      <p class="desc">The hub for Palestinian Arabic NLP. Produces Curras, Wojood, SinaTools, ALMA, ArBanking77, Konooz, Qabas, and the Arabic Ontology. Organizer of the NakbaNLP workshop series. Led by Prof. Mustafa Jarrar.</p>
+      <a href="https://sina.birzeit.edu" target="_blank" class="link">SinaLab <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3l5 5-5 5"/></svg></a>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://www.palestine-studies.org" target="_blank">Institute for Palestine Studies (IPS)</a></h3>
+      <p class="desc">Oldest institute devoted to Palestine documentation (Beirut, 1963). Co-publisher of PalQuest. Publishes the Journal of Palestine Studies.</p>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://palmuseum.org" target="_blank">The Palestinian Museum</a></h3>
+      <p class="desc">Birzeit-based. Runs the PMDA (343,485+ items) and PalQuest encyclopedia. Major hub for Palestinian digital heritage.</p>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://www.plands.org" target="_blank">Palestine Land Society</a></h3>
+      <p class="desc">Founded by Salman Abu Sitta. Produces the Atlas of Palestine and the register of depopulated localities — the geographic backbone of many Nakba projects.</p>
+    </div>
+
+    <div class="resource-card">
+      <h3><a href="https://nyuad.nyu.edu" target="_blank">NYU Abu Dhabi — CAMeL Lab</a></h3>
+      <p class="desc">Produces CAMeL Tools, MADAR, CAMeLBERT, and related Arabic NLP infrastructure. Key collaborator with Birzeit on Palestinian dialect annotation.</p>
+    </div>
+
+    <div class="resource-card">
+      <h3>Other Key Organizations</h3>
+      <p class="desc">
+        <a href="https://badil.org" target="_blank" style="color:var(--color-accent);font-weight:600">BADIL Resource Center</a> — Palestinian refugee rights, al-Majdal magazine.
+        &nbsp;·&nbsp;
+        <a href="https://www.unrwa.org" target="_blank" style="color:var(--color-accent);font-weight:600">UNRWA</a> — Custodian of the UNESCO-listed archive.
+        &nbsp;·&nbsp;
+        <a href="https://www.alhaq.org" target="_blank" style="color:var(--color-accent);font-weight:600">Al-Haq</a> — Human rights, FAI Unit.
+        &nbsp;·&nbsp;
+        <strong>7amleh</strong> — Arab Center for the Advancement of Social Media.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer>
+  <p>
+    <strong>Nakba Research Hub</strong> — A curated reference for researchers. Open source and community-maintained.<br>
+    Built with care. Contributions welcome via <a href="https://github.com/batouln/NakbaEcho" target="_blank">GitHub</a>.<br>
+    <span style="margin-top:0.5rem;display:inline-block;font-size:0.8rem;">Last updated: May 2026</span>
+  </p>
+</footer>
+
+</body>
+</html>
